@@ -130,7 +130,7 @@
   </li>
   {/each}
 </ol>
-<button class="button" on:click={loadMissingScreenshots}>Load missing thumbnails</button>
+<button class="button" on:click={loadMissingScreenshots}>Charger miniatures manquantes</button>
 
 <style>
   ol {
