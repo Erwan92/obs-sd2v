@@ -513,9 +513,7 @@
       {/each}
     {:else}
       <h1 class="subtitle">
-        Bienvenue sur le
-        <strong>OBS-SD2V</strong>
-        - le moyen le plus simple de gérer le déport de flux vidéos drone.
+        Bienvenue sur <strong>OBS-SD2V : </strong> le moyen le plus simple de gérer le déport de flux vidéos drone.
       </h1>
 
       {#if document.location.protocol === 'https:'}
