@@ -152,7 +152,7 @@
     const data = await sendCommand('ToggleReplayBuffer')
     console.debug('ToggleReplayBuffer', data.outputActive)
     if (data.outputActive === undefined) {
-      replayError = 'Replay buffer is not enabled.'
+      replayError = 'Le tampon de relecture n'est pas activé.'
       setTimeout(function () {
         replayError = ''
       }, 5000)
