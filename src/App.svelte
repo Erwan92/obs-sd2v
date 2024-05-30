@@ -41,7 +41,6 @@
       navigator.serviceWorker.register('/service-worker.js')
     }
 
-    // Request screen wakelock
     if ('wakeLock' in navigator) {
       try {
         await navigator.wakeLock.request('screen')
@@ -54,7 +53,6 @@
       } catch (e) {}
     }
 
-    // Toggle the navigation hamburger menu on mobile
     const navbar = document.querySelector('.navbar-burger')
     navbar.addEventListener('click', () => {
       navbar.classList.toggle('is-active')
@@ -63,7 +61,7 @@
         .classList.toggle('is-active')
     })
 
-    // Listen for fullscreen changes
+    // Gestion fullscreen
     document.addEventListener('fullscreenchange', () => {
       isFullScreen = document.fullscreenElement
     })
@@ -80,19 +78,18 @@
       // Read address from hash
       address = document.location.hash.slice(1)
 
-      // This allows you to add a password in the URL like this:
-      // http://obs-web.niek.tv/#ws://localhost:4455#password
+      // Pour rajouter un mdp dans  l'URL commme ca:
+      // http://erwan.org/#ws://localhost:4455#password
       if (address.includes('#')) {
         [address, password] = address.split('#')
       }
       await connect()
     }
 
-    // Export the sendCommand() function to the window object
     window.sendCommand = sendCommand
   })
 
-  // State
+  // Etat
   let connected
   let heartbeat = {}
   let heartbeatInterval
@@ -204,7 +201,7 @@
       const secure = location.protocol === 'https:' || address.endsWith(':443')
       address = secure ? 'wss://' : 'ws://' + address
     }
-    console.log('Connecting to:', address, '- using password:', password)
+    console.log('Connexion a:', address, '- en utilisant le mot de passe:', password)
     await disconnect()
     try {
       const { obsWebSocketVersion, negotiatedRpcVersion } = await obs.connect(
@@ -224,7 +221,7 @@
     await obs.disconnect()
     clearInterval(heartbeatInterval)
     connected = false
-    errorMessage = 'Disconnected'
+    errorMessage = 'Deconnecte'
   }
 
   // OBS events
@@ -235,7 +232,7 @@
       document.title,
       window.location.pathname + window.location.search
     ) // Remove the hash
-    console.log('Connection closed')
+    console.log('Connexion fermee')
   })
 
   obs.on('Identified', async () => {
@@ -247,9 +244,9 @@
     console.log('OBS-websocket version:', version)
     if (compareVersions(version, OBS_WEBSOCKET_LATEST_VERSION) < 0) {
       alert(
-        'You are running an outdated OBS-websocket (version ' +
+        'Vous utilisez un websocket OBS obsolète (version ' +
           version +
-          '), please upgrade to the latest version for full compatibility.'
+          '), veuillez mettre à niveau vers la dernière version pour une compatibilité totale.'
       )
     }
     if (
@@ -275,7 +272,7 @@
   })
 
   obs.on('ConnectionError', async () => {
-    errorMessage = 'Please enter your password:'
+    errorMessage = 'Veuillez rentrer le mot de passe:'
     document.getElementById('password').focus()
     if (!password) {
       connected = false
@@ -516,39 +513,29 @@
       {/each}
     {:else}
       <h1 class="subtitle">
-        Welcome to
-        <strong>OBS-web</strong>
-        - the easiest way to control
-        <a href="https://obsproject.com/" target="_blank" rel="noreferrer"
-          >OBS</a
-        >
-        remotely!
+        Bienvenue sur le
+        <strong>OBS-SD2V</strong>
+        - le moyen le plus simple de gérer le déport de flux vidéos drone.
       </h1>
 
       {#if document.location.protocol === 'https:'}
         <div class="notification is-danger">
-          You are checking this page on a secure HTTPS connection. That's great,
-          but it means you can
-          <strong>only</strong>
-          connect to WSS (secure websocket) addresses, for example OBS exposed with
-          <a href="https://ngrok.com/">ngrok</a>
-          or
-          <a href="https://pagekite.net/">pagekite</a>
-          . If you want to connect to a local OBS instance,
+          Vous consultez cette page sur une connexion HTTPS sécurisée. Cela veut dire que vous ne pouvez <strong>uniquement</strong> vous connecter à des adresses WSS.
+          Si vous souhaitez vous connecter à une instance OBS locale,
           <strong>
             <a
               href="http://{document.location.hostname}{document.location.port
                 ? ':' + document.location.port
                 : ''}{document.location.pathname}"
             >
-              please click here to load the non-secure version of this page
+              veuillez cliquer ici pour charger la version non sécurisée de cette page
             </a>
           </strong>
           .
         </div>
       {/if}
 
-      <p>To get started, enter your OBS host:port below and click "connect".</p>
+      <p>Pour commencer, entrez "nom_d'hôte_OBS:port" ci-dessous et cliquez sur "Connexion".</p>
 
       <form on:submit|preventDefault={connect}>
         <div class="field is-grouped">
@@ -571,7 +558,7 @@
             />
           </p>
           <p class="control">
-            <button class="button is-success">Connect</button>
+            <button class="button is-success">Connexion</button>
           </p>
         </div>
       </form>
