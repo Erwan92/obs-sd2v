@@ -14,7 +14,7 @@
   obs.on('CurrentSceneCollectionChanged', async (data) => {
     console.log('CurrentSceneCollectionChanged', data.sceneCollectionName)
     currentCollection = data.sceneCollectionName || ''
-    // Manually emit new scenes, since OBS doesn't send them when the collection changes
+    // Émettre manuellement de nouvelles scènes, puisque OBS ne les envoie pas lorsque la collection change
     obs.emit('SceneListChanged', await sendCommand('GetSceneList'))
   })
   obs.on('SceneCollectionListChanged', async (data) => {
