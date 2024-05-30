@@ -5,9 +5,9 @@
   "orientation": "landscape",
   "scope": "/",
   "start_url": "/",
-  "name": "OBS-web",
-  "short_name": "OBS-web",
-  "description": "OBS-web - The easiest way to control OBS remotely",
+  "name": "OBS-SD2V",
+  "short_name": "OBS-SD2V",
+  "description": "OBS-SD2V - Le moyen le plus simple de gérer les flux vidéos drone",
   "prefer_related_applications": false,
   "icons": [
     {
