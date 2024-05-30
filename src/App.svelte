@@ -559,7 +559,7 @@
               class="input"
               type="text"
               autocomplete=""
-              placeholder="ws://localhost:4455"
+              placeholder="ws://localhost:4444"
             />
             <input
               id="password"
@@ -567,7 +567,7 @@
               class="input"
               type="password"
               autocomplete="current-password"
-              placeholder="password (leave empty if you have disabled authentication)"
+              placeholder="mot de passe (laisser vide si vous avez desactive l'authentification)"
             />
           </p>
           <p class="control">
@@ -575,33 +575,6 @@
           </p>
         </div>
       </form>
-      <p class="help">
-        Make sure that you use <a
-          href="https://github.com/obsproject/obs-studio/releases">OBS v28+</a
-        >
-        or install the
-        <a
-          href="https://github.com/obsproject/obs-websocket/releases/tag/{OBS_WEBSOCKET_LATEST_VERSION}"
-          target="_blank"
-          rel="noreferrer"
-          >obs-websocket {OBS_WEBSOCKET_LATEST_VERSION} plugin</a
-        >
-        for v27. If you use an older version of OBS, see the
-        <a href="/v4/">archived OBS-web v4</a> page.
-      </p>
     {/if}
   </div>
 </section>
-
-<footer class="footer">
-  <div class="content has-text-centered">
-    <p>
-      <strong>OBS-web</strong>
-      by
-      <a href="https://niekvandermaas.nl/">Niek van der Maas</a>
-      &mdash; see
-      <a href="https://github.com/Niek/obs-web">GitHub</a>
-      for source code.
-    </p>
-  </div>
-</footer>
