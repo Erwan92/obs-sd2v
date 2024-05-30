@@ -56,7 +56,7 @@ export default {
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <meta name='apple-mobile-web-app-capable' content='yes'>
 
-  <title>OBS-web</title>
+  <title>OBS-SD2V</title>
 
   <link rel='icon' type='image/png' href='favicon.png'>
   ${css}
