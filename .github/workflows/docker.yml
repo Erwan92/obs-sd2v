@@ -32,4 +32,4 @@ jobs:
           push: true # push to registry
           pull: true # always fetch the latest base images
           platforms: linux/amd64,linux/arm64 # build for both amd64 and arm64
-          tags: ghcr.io/niek/obs-web:latest
+          tags: ghcr.io/Erwan92/obs-sd2v:latest
